@@ -11,6 +11,8 @@ doc = nlp(text)
 entities = [ent.text for ent in doc.ents]
 #print(entities)
 
+import streamlit as st
+
 # Count the frequency of each entity
 entity_counts = {}
 for entity in entities:
@@ -22,12 +24,6 @@ for entity in entities:
 # Extract the entities and their counts into separate lists
 labels = list(entity_counts.keys())
 values = list(entity_counts.values())
-plt.figure(figsize=(10, 5))
-plt.bar(labels, values)
-# Add a title and axis labels
-plt.title("Entity Frequency")
-plt.xlabel("Entity")
-plt.ylabel("Frequency")
 
-# Show the plot
-plt.show()
+# Create the bar chart
+st.bar_chart(values, labels)
