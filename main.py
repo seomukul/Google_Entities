@@ -1,7 +1,6 @@
 import requests
-import matplotlib.pyplot as plt
+import streamlit as st
 from bs4 import BeautifulSoup
-nlp = spacy.load("en_core_web_sm")
 url = "https://en.wikipedia.org/wiki/Steve_Jobs"
 response = requests.get(url)
 html = response.text
@@ -9,9 +8,6 @@ soup = BeautifulSoup(html, "html.parser")
 text = soup.get_text()
 doc = nlp(text)
 entities = [ent.text for ent in doc.ents]
-#print(entities)
-
-import streamlit as st
 
 # Count the frequency of each entity
 entity_counts = {}
